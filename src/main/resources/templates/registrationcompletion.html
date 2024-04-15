@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生情報変更フォーム</title>
+    <link rel="stylesheet" href="schoolchange.css">
+</head>
+<body class="form-signin w-100 m-auto">
+    <header>
+        <h1>得点管理システム - 学生情報変更</h1>
+    </header>
+    
+    <div class="sidebar" th:fragment="sidebar">
+        <!-- Sidebar content goes here -->
+        <ul>
+            <li><a href="">メニュー</a></li>
+            <li><a href="#">学生管理</a></li>
+            <li><a href="#">成績管理</a></li>
+            <li><a href="#">成績登録</a></li>
+            <li><a href="#">成績参照</a></li>
+            <li><a href="#">科目管理</a></li>
+        </ul>
+    </div>
+
+    <form th:action="@{/registrationcompletion}" method="post" enctype="application/x-www-form-urlencoded">
+        <h1>学生情報変更</h1>
+        
+        <br><label for="entYear">入学年度:</label><br>
+        <input type="text" id="entYear" name="entYear" th:value="${student.entYear}" readonly><br><br>
+        
+        <br><label for="no">学生番号:</label><br>
+        <input type="text" id="no" name="no" th:value="${student.no}" readonly><br><br>
+        
+        <br><label for="name">学生名:</label><br>
+        <input type="text" id="name" name="name" th:value="${student.name}" required><br><br>
+        
+        <br><label for="classNum">クラス:</label><br>
+        <select id="classNum" name="classNum" required>
+            <option value=""></option>
+            <option value="101" th:selected="${student.classNum == '101'}">101</option>
+            <option value="201" th:selected="${student.classNum == '201'}">201</option>
+            <option value="301" th:selected="${student.classNum == '301'}">301</option>
+        </select><br><br>
+        
+        <br><label for="enrolled">在学中:</label>
+        <input type="checkbox" id="enrolled" name="enrolled" th:checked="${student.isAttend}">
+        
+        <br><input type="submit" value="変更する">
+    </form>
+    <p><a href="/view/registration">戻る</a></p>
+    
+    <footer>
+        <p>&copy; 2023 TIC</p>
+        <p>大原学園</p>
+    </footer>
+</body>
+</html>

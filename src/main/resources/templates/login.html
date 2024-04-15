@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>得点管理システム</title>
+          <link rel="stylesheet" href="login.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+<body <body class="form-signin w-100 m-auto">
+	<header>
+        <h1>得点管理システム</h1>
+    </header>
+    <h1>ログイン</h1>
+    
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+    <!-- Login Form -->
+   
+    <form th:action="@{/login}" method="post">
+        <div>
+          <label for="loginId">ID:</label>
+          <br><input type="text" id="loginId" name="loginId" required><br>
+        </div>
+        <div>
+            <label for="password">パスワード:</label>
+            <br><input type="password" id="password" name="password" required>
+            <input type="checkbox" id="showPassword">
+            <label for="showPassword">パスワードを表示する</label>
+            <script>// チェックボックスの要素を取得
+var showPasswordCheckbox = document.getElementById('showPassword');
+// パスワードフィールドの要素を取得
+var passwordField = document.getElementById('password');
+
+// チェックボックスが変更されたときの処理
+showPasswordCheckbox.addEventListener('change', function() {
+  // チェックボックスがチェックされているかどうかを確認
+  if (showPasswordCheckbox.checked) {
+    // パスワードを表示する
+    passwordField.type = 'text';
+  } else {
+    // パスワードを非表示にする
+    passwordField.type = 'password';
+  }
+});
+</script>
+
+        </div>
+        <button type="submit">ログイン</button>
+    </form>
+    
+    <!-- Error Message -->
+    <footer>
+    <p>&copy; 2023 TIC</p>
+    <p>大原学園</p>
+</footer>
+    
+</body>
+</html>
